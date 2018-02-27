@@ -17,9 +17,7 @@ The included `InterpretableDecisionTreeClassifier` and `InterpretableDecisionTre
 
 Tree size and complexity can be reduced by two parameters: 
 * the classical [`max_depth' parameter](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier), and
-* the `acceptable_score_drop' parameter, which specifies the maximum acceptable reduction in classifier performance (higher means more branches can be pruned). By default, the F1-score is used for this purpose. A `scorer' parameter can be passed to the `fit' method if optimization based on other scores is preferred.
-
-The learned rules of a trained model can be displayed simply by casting the object as a string, e.g. `print model`, or by using the `model.tostring(feature_names=['feature1', 'feature2', ], decimals=1)` method and specifying names for the features and, optionally, the rounding precision. 
+* the `acceptable_score_drop' parameter, which specifies the maximum acceptable reduction in classifier performance (higher means more branches can be pruned). By default, the F1-score is used for this purpose. A `scorer' parameter can be passed to the `fit' method if optimization based on other scores is preferred. 
 
 Comparison with other sklearn classifiers (can be reproduced with `run_demo_classifier_comparison.py'. Rule List Classifier: see [here](https://github.com/tmadl/sklearn-expertsys))
 
@@ -32,6 +30,21 @@ uci-20070111 haberman 0.380 (SE=0.020)    0.305 (SE=0.019)        0.380 (SE=0.02
 heart                 0.827 (SE=0.005)    0.800 (SE=0.005)        0.824 (SE=0.005)       *0.828 (SE=0.006)      0.792 (SE=0.006)        0.808 (SE=0.008)
 liver-disorders       0.684 (SE=0.013)    0.610 (SE=0.017)       *0.702 (SE=0.014)        0.670 (SE=0.016)      0.663 (SE=0.019)        0.635 (SE=0.016)
 '''
+
+The learned rules of a trained model can be displayed simply by casting the object as a string, e.g. `print model`, or by using the `model.tostring(feature_names=['feature1', 'feature2', ], decimals=1)` method and specifying names for the features and, optionally, the rounding precision. 
+
+```python
+# Data from https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
+def breast_cancer_probability(radius, texture, perimeter, area, smoothness, compactness, concavity, concave_points, symmetry, fractal_dimension):
+  if perimeter <= 2.5:
+    if concavity <= 5.5: return 0.012
+    else: return 0.875
+  else:
+    if area <= 2.5: return 0.217
+    else: return 0.917
+'''
+
+Self-contained usage example:
 
 ```python
 import numpy as np
