@@ -1,4 +1,4 @@
-Highly interpretable, sklearn-compatible classifier and regressor based on compressed decision trees
+Highly interpretable, sklearn-compatible classifier and regressor based on simplified decision trees
 ===============
 
 Implementation of a simple, greedy optimization approach to simplifying decision trees for better interpretability and readability. 
@@ -8,14 +8,16 @@ It produces small decision trees, which makes trained classifiers **easily inter
 Turns out to frequently outperform [Bayesian Rule Lists](https://github.com/tmadl/sklearn-expertsys) in terms of accuracy and computational complexity, and Logistic Regression in terms of interpretability.
 Note that a feature selection method is highly advisable on large datasets, as the runtime directly depends on the number of features. 
 
-
-
 Usage
 ===============
 
 The project requires [scikit-learn](http://scikit-learn.org/stable/install.html).
 
-The included `InterpretableDecisionTreeClassifier` and `InterpretableDecisionTreeRegressor` both work as scikit-learn estimators, with a `model.fit(X,y)` method which takes training data `X` (numpy array or pandas DataFrame) and labels `y`. 
+The included `InterpretableDecisionTreeClassifier` and `InterpretableDecisionTreeRegressor` both work as scikit-learn estimators, with a `model.fit(X,y)` method which takes training data `X` (numpy array or pandas DataFrame) and labels `y`.
+
+Tree size and complexity can be reduced by two parameters: 
+* the classical [`max_depth' parameter](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier), and
+* the `acceptable_score_drop' parameter, which specifies the maximum acceptable reduction in classifier performance (higher means more branches can be pruned). By default, the F1-score is used for this purpose. A `scorer' parameter can be passed to the `fit' method if optimization based on other scores is preferred.
 
 The learned rules of a trained model can be displayed simply by casting the object as a string, e.g. `print model`, or by using the `model.tostring(feature_names=['feature1', 'feature2', ], decimals=1)` method and specifying names for the features and, optionally, the rounding precision. 
 
@@ -47,3 +49,5 @@ Decision Tree F1 score: 0.81119342213567125
 Interpretable Decision Tree F1 score: 0.8416950113378685
 """
 ```
+
+![Simplified decision tree on moons dataset](example_dt.png)
