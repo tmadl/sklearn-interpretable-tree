@@ -29,7 +29,7 @@ breast-cancer         0.899 (SE=0.005)    0.912 (SE=0.005)        0.920 (SE=0.00
 uci-20070111 haberman 0.380 (SE=0.020)    0.305 (SE=0.019)        0.380 (SE=0.020)       *0.404 (SE=0.015)      0.321 (SE=0.019)        0.268 (SE=0.017)
 heart                 0.827 (SE=0.005)    0.800 (SE=0.005)        0.824 (SE=0.005)       *0.828 (SE=0.006)      0.792 (SE=0.006)        0.808 (SE=0.008)
 liver-disorders       0.684 (SE=0.013)    0.610 (SE=0.017)       *0.702 (SE=0.014)        0.670 (SE=0.016)      0.663 (SE=0.019)        0.635 (SE=0.016)
-'''
+```
 
 The learned rules of a trained model can be displayed simply by casting the object as a string, e.g. `print model`, or by using the `model.tostring(feature_names=['feature1', 'feature2', ], decimals=1)` method and specifying names for the features and, optionally, the rounding precision. 
 
@@ -42,7 +42,7 @@ def breast_cancer_probability(radius, texture, perimeter, area, smoothness, comp
   else:
     if area <= 2.5: return 0.217
     else: return 0.917
-'''
+```
 
 Self-contained usage example:
 
