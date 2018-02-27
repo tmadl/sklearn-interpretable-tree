@@ -1,4 +1,4 @@
-Highly interpretable, sklearn-compatible classifier based on compressed decision trees
+Highly interpretable, sklearn-compatible classifier and regressor based on compressed decision trees
 ===============
 
 Implementation of a simple, greedy optimization approach to simplifying decision trees for better interpretability and readability. 
@@ -21,7 +21,7 @@ The learned rules of a trained model can be displayed simply by casting the obje
 
 Comparison with other sklearn classifiers (can be reproduced with `run_demo_classifier_comparison.py'. Rule List Classifier: see [here](https://github.com/tmadl/sklearn-expertsys))
 
-```
+```python
                        D.Tree3 F1          D.Tree5 F1            Interpr.D.Tree3 F1      Interpr.D.Tree5 F1     RuleListClassifier F1   Random Forest F1      
 ==========================================================================================================================================================
 diabetes_scale        0.814 (SE=0.006)    0.808 (SE=0.007)        0.826 (SE=0.005)       *0.833 (SE=0.005)      0.765 (SE=0.007)        0.793 (SE=0.006)
