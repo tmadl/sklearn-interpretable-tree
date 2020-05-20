@@ -19,8 +19,7 @@ def simplify_tree(decision_tree, X, y, scorer=make_scorer(f1_score, greater_is_b
         tree = decision_tree.tree_
 
         removed_branches = []
-        nodes = range(tree.node_count)
-        rnd.shuffle(nodes)
+        nodes = np.random.permutation(np.arange(tree.node_count))
         for i in nodes:
             current_left, current_right = tree.children_left[i], tree.children_right[i]
 
