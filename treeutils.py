@@ -54,7 +54,7 @@ def tree_to_code(tree, feature_names, decimals=4, transform_to_probabilities=Tru
     stdout_ = sys.stdout
     sys.stdout = StringIO()
     
-    print("def probability_of_class_one({}):".format(", ".join(feature_names))+"")
+    #print("def probability_of_class_one({}):".format(", ".join(feature_names))+"")
 
     def recurse(node, depth):
         indent = "  " * depth
@@ -84,4 +84,7 @@ def tree_to_code(tree, feature_names, decimals=4, transform_to_probabilities=Tru
 
     string = sys.stdout.getvalue()
     sys.stdout = stdout_
+    
+    string = "def probability_of_class_one({}):".format(", ".join([f for f in feature_names if f in string]))+"\n"+string
+    
     return string
